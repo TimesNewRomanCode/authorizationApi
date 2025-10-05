@@ -1,3 +1,5 @@
+import uuid
+
 from pydantic import BaseModel, Field
 
 class RegistrationScheme(BaseModel):
@@ -25,5 +27,13 @@ class LoginScheme(BaseModel):
     email: str
     password: str
 
-class SuccessResponse(BaseModel):
-    message: str
+class TokenResponse(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str
+    user_id: uuid.UUID
+    email: str
+
+class RefreshTokenResponse(BaseModel):
+    access_token: str
+    token_type: str
